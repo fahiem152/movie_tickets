@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:movie_tickets/data/dummies/dummy_authentication.dart';
-import 'package:movie_tickets/data/dummies/dummy_user_repository.dart';
 import 'package:movie_tickets/data/firebase/firebase_authentication.dart';
 import 'package:movie_tickets/data/firebase/firebase_user_repository.dart';
 import 'package:movie_tickets/domain/usecases/logn/login.dart';
 import 'package:movie_tickets/presentation/pages/main_page/main_page.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:movie_tickets/presentation/providers/usecases/login_provider.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends ConsumerWidget {
   const LoginPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
         body: Center(
       child: ElevatedButton(
@@ -18,10 +18,8 @@ class LoginPage extends StatelessWidget {
           backgroundColor: Colors.blueGrey,
         ),
         onPressed: () {
-          Login login = Login(
-            authentication: FirebaseAuthentiaction(),
-            userRepository: FirebaseUserRepository(),
-          );
+          Login login = ref.watch(loginProvider);
+
           login
               .call(
             LoginParams(
