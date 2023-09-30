@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movie_tickets/data/dummies/dummy_authentication.dart';
 import 'package:movie_tickets/data/dummies/dummy_user_repository.dart';
+import 'package:movie_tickets/data/firebase/firebase_authentication.dart';
+import 'package:movie_tickets/data/firebase/firebase_user_repository.dart';
 import 'package:movie_tickets/domain/usecases/logn/login.dart';
 import 'package:movie_tickets/presentation/pages/main_page/main_page.dart';
 
@@ -17,14 +19,14 @@ class LoginPage extends StatelessWidget {
         ),
         onPressed: () {
           Login login = Login(
-            authentication: DummyAuthentication(),
-            userRepository: DummyUserRepository(),
+            authentication: FirebaseAuthentiaction(),
+            userRepository: FirebaseUserRepository(),
           );
           login
               .call(
             LoginParams(
-              email: "email",
-              password: "password",
+              email: "ahmad@gmail.com",
+              password: "12345678",
             ),
           )
               .then((result) {

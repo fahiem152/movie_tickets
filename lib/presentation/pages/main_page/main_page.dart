@@ -13,7 +13,8 @@ class MainPage extends StatelessWidget {
           actions: const [],
         ),
         body: Center(
-          child: Text("${user.name} | ${user.email}"),
+          child: Text(
+              "${user.name} | ${user.email} | ${user.uid} | ${user.photoUrl} | ${user.balance}"),
         ));
   }
 }
