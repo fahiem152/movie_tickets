@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "85809790784",
+    "project_id": "movie-tickets-7d065",
+    "storage_bucket": "movie-tickets-7d065.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:85809790784:android:9d74fe192ecb919b0684a5",
+        "android_client_info": {
+          "package_name": "com.fahiem.movie_tickets"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLd90irjNe55PWjminl5zI6oD8FYPJRFE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
