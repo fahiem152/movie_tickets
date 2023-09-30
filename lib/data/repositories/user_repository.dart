@@ -18,7 +18,7 @@ abstract interface class UserRepository {
   Future<Result<User>> updateUser({
     required User user,
   });
-  Future<Result<User>> getUserBalance({
+  Future<Result<int>> getUserBalance({
     required String uid,
   });
   Future<Result<User>> updateUserBalance({
