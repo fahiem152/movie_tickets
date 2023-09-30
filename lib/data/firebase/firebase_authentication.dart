@@ -8,15 +8,16 @@ class FirebaseAuthentiaction implements Authentication {
   FirebaseAuthentiaction({firebase_auth.FirebaseAuth? firebaseAuth})
       : _firebaseAuth = firebase_auth.FirebaseAuth.instance;
   @override
-  String? getLoggedInUserId() {
-    // TODO: implement getLoggedInUserId
-    throw UnimplementedError();
-  }
+  String? getLoggedInUserId() => _firebaseAuth.currentUser?.uid;
 
   @override
   Future<Result<void>> logOut() async {
-    // TODO: implement logOut
-    throw UnimplementedError();
+    await _firebaseAuth.signOut();
+    if (_firebaseAuth.currentUser == null) {
+      return const Result.success(null);
+    } else {
+      return const Result.failed("Failed To Sign Out");
+    }
   }
 
   @override
@@ -33,8 +34,13 @@ class FirebaseAuthentiaction implements Authentication {
 
   @override
   Future<Result<String>> register(
-      {required String email, required String password}) {
-    // TODO: implement register
-    throw UnimplementedError();
+      {required String email, required String password}) async {
+    try {
+      final userCredential = await _firebaseAuth.signInWithEmailAndPassword(
+          email: email, password: password);
+      return Result.success(userCredential.user!.uid);
+    } on firebase_auth.FirebaseAuthException catch (e) {
+      return Result.failed("${e.message}");
+    }
   }
 }
