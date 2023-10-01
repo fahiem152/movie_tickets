@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:movie_tickets/presentation/pages/login/login_page.dart';
 import 'package:movie_tickets/presentation/pages/main_page/main_page.dart';
+import 'package:movie_tickets/presentation/pages/register/register_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'router_provider.g.dart';
@@ -13,12 +14,17 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(
         GoRoute(
           path: '/main',
           name: 'main',
-          builder: (context, state) => MainPage(),
+          builder: (context, state) => const MainPage(),
         ),
         GoRoute(
           path: '/login',
           name: 'login',
           builder: (context, state) => LoginPage(),
+        ),
+        GoRoute(
+          path: '/register',
+          name: 'register',
+          builder: (context, state) => RegisterPage(),
         ),
       ],
     );
