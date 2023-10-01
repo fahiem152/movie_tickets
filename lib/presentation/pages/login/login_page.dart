@@ -1,16 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:movie_tickets/data/firebase/firebase_authentication.dart';
-import 'package:movie_tickets/data/firebase/firebase_user_repository.dart';
-import 'package:movie_tickets/domain/usecases/logn/login.dart';
-import 'package:movie_tickets/presentation/pages/main_page/main_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:movie_tickets/presentation/providers/usecases/login_provider.dart';
+import 'package:movie_tickets/presentation/providers/routes/router_provider.dart';
+
+import 'package:movie_tickets/presentation/providers/user_data/user_data_provider.dart';
 
 class LoginPage extends ConsumerWidget {
   const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.listen(
+      userDataProvider,
+      (previous, next) {
+        if (next is AsyncData) {
+          if (next.value != null) {
+            ref.read(routerProvider).goNamed('main');
+          }
+        } else if (next is AsyncError) {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(next.error.toString())));
+        }
+      },
+    );
     return Scaffold(
         body: Center(
       child: ElevatedButton(
@@ -18,33 +29,9 @@ class LoginPage extends ConsumerWidget {
           backgroundColor: Colors.blueGrey,
         ),
         onPressed: () {
-          Login login = ref.watch(loginProvider);
-
-          login
-              .call(
-            LoginParams(
-              email: "ahmad@gmail.com",
-              password: "12345678",
-            ),
-          )
-              .then((result) {
-            if (result.isSuccess) {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => MainPage(
-                    user: result.resultValue!,
-                  ),
-                ),
-              );
-            } else {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(result.errorMessage!),
-                ),
-              );
-            }
-          });
+          ref
+              .read(userDataProvider.notifier)
+              .login(email: 'ahmad@gmail.com', password: '12345678');
         },
         child: const Text("Login"),
       ),
