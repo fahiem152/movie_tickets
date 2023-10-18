@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_tickets/presentation/extensions/build_context_extension.dart';
-import 'package:movie_tickets/presentation/msic/methods.dart';
+import 'package:movie_tickets/presentation/pages/profile_page/profile_page.dart';
 import 'package:movie_tickets/presentation/providers/routes/router_provider.dart';
 import 'package:movie_tickets/presentation/providers/user_data/user_data_provider.dart';
-import 'package:movie_tickets/presentation/widgets/bottom_nav_bar.dart';
-import 'package:movie_tickets/presentation/widgets/bottom_nav_bar_item.dart';
+
+import '../../widgets/bottom_nav_bar.dart';
+import '../../widgets/bottom_nav_bar_item.dart';
 
 class MainPage extends ConsumerStatefulWidget {
   const MainPage({
@@ -56,13 +57,7 @@ class _MainPageState extends ConsumerState<MainPage> {
               ),
             ),
             Center(
-              child: Text(
-                "Profile Page",
-                style: TextStyle(
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              child: ProfilePage(),
             )
           ],
         ),
@@ -93,7 +88,8 @@ class _MainPageState extends ConsumerState<MainPage> {
           onTap: (index) {
             selectedPage = index;
             pageController.animateToPage(selectedPage,
-                duration: Duration(milliseconds: 200), curve: Curves.easeInOut);
+                duration: const Duration(milliseconds: 200),
+                curve: Curves.easeInOut);
           },
           selectedIndex: 0,
         )
