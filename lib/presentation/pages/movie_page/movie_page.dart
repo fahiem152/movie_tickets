@@ -8,6 +8,7 @@ import 'package:movie_tickets/presentation/pages/movie_page/methods/user_info.da
 
 import 'package:movie_tickets/presentation/providers/movie/now_playing_provider.dart';
 import 'package:movie_tickets/presentation/providers/movie/up_coming_provider.dart';
+import 'package:movie_tickets/presentation/providers/routes/router_provider.dart';
 
 class MoviePage extends ConsumerWidget {
   final List<String> promotionImageFileNames = ['popcorn.jpg', 'buy1get1.jpg'];
@@ -24,7 +25,9 @@ class MoviePage extends ConsumerWidget {
         ...movieList(
           title: 'Now Playing',
           movies: ref.watch(nowPlayingProvider),
-          onTap: (movie) {},
+          onTap: (movie) {
+            ref.read(routerProvider).pushNamed('detail', extra: movie);
+          },
         ),
         verticalSpace(30),
         ...promotionList(promotionImageFileNames),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_tickets/domain/entities/movie.dart';
-import 'package:movie_tickets/presentation/widgets/nerwokr_image_card.dart';
+import 'package:movie_tickets/presentation/widgets/nerwork_image_card.dart';
 
 List<Widget> movieList(
         {required String title,

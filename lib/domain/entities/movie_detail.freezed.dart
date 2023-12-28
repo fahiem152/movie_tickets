@@ -20,7 +20,7 @@ mixin _$MovieDetail {
   String get title => throw _privateConstructorUsedError;
   String get overview => throw _privateConstructorUsedError;
   int get runtime => throw _privateConstructorUsedError;
-  int get voteAverage => throw _privateConstructorUsedError;
+  double get voteAverage => throw _privateConstructorUsedError;
   List<String> get genres => throw _privateConstructorUsedError;
   String? get posterPath => throw _privateConstructorUsedError;
   String? get backdropPath => throw _privateConstructorUsedError;
@@ -41,7 +41,7 @@ abstract class $MovieDetailCopyWith<$Res> {
       String title,
       String overview,
       int runtime,
-      int voteAverage,
+      double voteAverage,
       List<String> genres,
       String? posterPath,
       String? backdropPath});
@@ -89,7 +89,7 @@ class _$MovieDetailCopyWithImpl<$Res, $Val extends MovieDetail>
       voteAverage: null == voteAverage
           ? _value.voteAverage
           : voteAverage // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       genres: null == genres
           ? _value.genres
           : genres // ignore: cast_nullable_to_non_nullable
@@ -119,7 +119,7 @@ abstract class _$$MovieDetailImplCopyWith<$Res>
       String title,
       String overview,
       int runtime,
-      int voteAverage,
+      double voteAverage,
       List<String> genres,
       String? posterPath,
       String? backdropPath});
@@ -165,7 +165,7 @@ class __$$MovieDetailImplCopyWithImpl<$Res>
       voteAverage: null == voteAverage
           ? _value.voteAverage
           : voteAverage // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       genres: null == genres
           ? _value._genres
           : genres // ignore: cast_nullable_to_non_nullable
@@ -205,7 +205,7 @@ class _$MovieDetailImpl implements _MovieDetail {
   @override
   final int runtime;
   @override
-  final int voteAverage;
+  final double voteAverage;
   final List<String> _genres;
   @override
   List<String> get genres {
@@ -268,7 +268,7 @@ abstract class _MovieDetail implements MovieDetail {
       required final String title,
       required final String overview,
       required final int runtime,
-      required final int voteAverage,
+      required final double voteAverage,
       required final List<String> genres,
       final String? posterPath,
       final String? backdropPath}) = _$MovieDetailImpl;
@@ -282,7 +282,7 @@ abstract class _MovieDetail implements MovieDetail {
   @override
   int get runtime;
   @override
-  int get voteAverage;
+  double get voteAverage;
   @override
   List<String> get genres;
   @override

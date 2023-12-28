@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:movie_tickets/data/repositories/movie_repository.dart';
 import 'package:movie_tickets/domain/entities/actor.dart';
@@ -21,6 +23,8 @@ class TmdbMovieRepositoy implements MovieRepository {
         'https://api.themoviedb.org/3/movie/$id?language=en-US',
         options: _options,
       );
+      print("response: $response");
+      log("response: $response");
       return Result.success(MovieDetail.fromJSON(response.data));
     } on DioException catch (e) {
       return Result.failed("${e.message}");

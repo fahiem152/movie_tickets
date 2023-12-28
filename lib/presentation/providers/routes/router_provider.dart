@@ -1,4 +1,6 @@
 import 'package:go_router/go_router.dart';
+import 'package:movie_tickets/domain/entities/movie.dart';
+import 'package:movie_tickets/presentation/pages/detail_page/detail_page.dart';
 import 'package:movie_tickets/presentation/pages/login/login_page.dart';
 import 'package:movie_tickets/presentation/pages/main_page/main_page.dart';
 import 'package:movie_tickets/presentation/pages/register/register_page.dart';
@@ -25,6 +27,13 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(
           path: '/register',
           name: 'register',
           builder: (context, state) => RegisterPage(),
+        ),
+        GoRoute(
+          path: '/detail',
+          name: 'detail',
+          builder: (context, state) => DetailPage(
+            movie: state.extra as Movie,
+          ),
         ),
       ],
     );
