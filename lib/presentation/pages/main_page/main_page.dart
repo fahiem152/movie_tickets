@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_tickets/presentation/extensions/build_context_extension.dart';
 import 'package:movie_tickets/presentation/pages/movie_page/movie_page.dart';
 import 'package:movie_tickets/presentation/pages/profile_page/profile_page.dart';
+import 'package:movie_tickets/presentation/pages/ticket_page/ticket_page.dart';
 import 'package:movie_tickets/presentation/providers/routes/router_provider.dart';
 import 'package:movie_tickets/presentation/providers/user_data/user_data_provider.dart';
 
@@ -40,15 +41,7 @@ class _MainPageState extends ConsumerState<MainPage> {
           }),
           children: [
             Center(child: MoviePage()),
-            const Center(
-              child: Text(
-                "Tickets Page",
-                style: TextStyle(
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
+            const TicketPage(),
             const Center(
               child: ProfilePage(),
             )

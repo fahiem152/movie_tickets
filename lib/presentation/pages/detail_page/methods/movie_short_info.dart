@@ -20,7 +20,6 @@ List<Widget> movieShortInfo({
             ),
             horizontalSpace(5),
             SizedBox(
-              width: 20,
               child: Text(
                 '${asyncMovieDetail.when(data: (data) => data != null ? data.runtime : '-', error: (error, stackTrace) => '-', loading: () => '-')}',
                 style: const TextStyle(
@@ -35,15 +34,7 @@ List<Widget> movieShortInfo({
               child: Image.asset('assets/genre.png'),
             ),
             horizontalSpace(8),
-            SizedBox(
-              width: MediaQuery.of(context).size.width -
-                  48 -
-                  14 -
-                  24 -
-                  20 -
-                  14 -
-                  5 -
-                  8,
+            Expanded(
               child: asyncMovieDetail.when(
                 data: (data) {
                   String genres = data?.genres.join(', ') ?? '-';

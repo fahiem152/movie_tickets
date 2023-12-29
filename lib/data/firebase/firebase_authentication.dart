@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:movie_tickets/data/repositories/authentication.dart';
 import 'package:movie_tickets/domain/entities/result.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
