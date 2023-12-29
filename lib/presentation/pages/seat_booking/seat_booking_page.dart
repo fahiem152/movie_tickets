@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:movie_tickets/domain/entities/movie_detail.dart';
 import 'package:movie_tickets/domain/entities/transaction.dart';
+import 'package:movie_tickets/presentation/extensions/build_context_extension.dart';
 import 'package:movie_tickets/presentation/msic/constans.dart';
 import 'package:movie_tickets/presentation/pages/seat_booking/methods/legend.dart';
 import 'package:movie_tickets/presentation/pages/seat_booking/methods/movie_screen.dart';
@@ -50,7 +51,7 @@ class _SeatBookingPageState extends ConsumerState<SeatBookingPage> {
             child: ListView(
       children: [
         Padding(
-          padding: EdgeInsets.all(
+          padding: const EdgeInsets.all(
             24,
           ),
           child: Column(
@@ -87,7 +88,7 @@ class _SeatBookingPageState extends ConsumerState<SeatBookingPage> {
               ),
               Text(
                 '${selectedSeats.length} seats selected',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16.0,
                   fontWeight: FontWeight.bold,
                 ),
@@ -107,7 +108,20 @@ class _SeatBookingPageState extends ConsumerState<SeatBookingPage> {
                       ),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    if (selectedSeats.isEmpty) {
+                      context.showSnackBar('Please select at least one seat');
+                    } else {
+                      var updateTransaction = transaction.copyWith(
+                        seats:
+                            (selectedSeats..sort()).map((e) => '$e').toList(),
+                        ticketAmount: selectedSeats.length,
+                        ticketPrice: 25000,
+                      );
+                      ref.read(routerProvider).pushNamed('booking-confirmation',
+                          extra: (movieDetail, updateTransaction));
+                    }
+                  },
                   child: const Text("Next"),
                 ),
               )

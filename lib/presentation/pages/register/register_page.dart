@@ -21,6 +21,15 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
   final TextEditingController reTypePasswordController =
       TextEditingController();
   @override
+  void dispose() {
+    nameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    reTypePasswordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     ref.listen(
       userDataProvider,
