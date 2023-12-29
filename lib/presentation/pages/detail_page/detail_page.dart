@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_tickets/domain/entities/movie.dart';
+import 'package:movie_tickets/domain/entities/movie_detail.dart';
 import 'package:movie_tickets/presentation/msic/constans.dart';
 import 'package:movie_tickets/presentation/msic/methods.dart';
 import 'package:movie_tickets/presentation/pages/detail_page/methods/background.dart';
@@ -71,7 +72,14 @@ class DetailPage extends ConsumerWidget {
                   horizontal: 24,
                 ),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    MovieDetail? movieDetail = asyncMovieDetail.valueOrNull;
+                    if (movieDetail != null) {
+                      ref
+                          .read(routerProvider)
+                          .pushNamed('time-booking', extra: movieDetail);
+                    }
+                  },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: backgroundColor,
                     backgroundColor: saffron,
