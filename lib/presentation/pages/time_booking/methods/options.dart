@@ -11,18 +11,18 @@ List<Widget> options<T>({
 }) =>
     [
       Padding(
-        padding: EdgeInsets.only(
+        padding: const EdgeInsets.only(
           left: 24,
         ),
         child: Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 16.0,
             fontWeight: FontWeight.bold,
           ),
         ),
       ),
-      SizedBox(
+      const SizedBox(
         height: 10.0,
       ),
       SingleChildScrollView(

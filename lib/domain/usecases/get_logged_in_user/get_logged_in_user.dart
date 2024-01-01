@@ -24,7 +24,7 @@ class GetLoggedInUser implements UseCase<Result<User>, void> {
         return Result.failed("${userResult.errorMessage}");
       }
     } else {
-      return Result.failed("No user Logged In");
+      return const Result.failed("No user Logged In");
     }
   }
 }

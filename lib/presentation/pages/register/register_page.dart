@@ -1,14 +1,16 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_tickets/presentation/extensions/build_context_extension.dart';
 import 'package:movie_tickets/presentation/msic/constans.dart';
-import 'package:movie_tickets/presentation/msic/methods.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:movie_tickets/presentation/providers/routes/router_provider.dart';
 import 'package:movie_tickets/presentation/providers/user_data/user_data_provider.dart';
 import 'package:movie_tickets/presentation/widgets/text_input_widget.dart';
 
 class RegisterPage extends ConsumerStatefulWidget {
-  RegisterPage({super.key});
+  const RegisterPage({super.key});
 
   @override
   ConsumerState<RegisterPage> createState() => _RegisterPageState();
@@ -29,13 +31,15 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
     super.dispose();
   }
 
+  XFile? xFile;
+
   @override
   Widget build(BuildContext context) {
     ref.listen(
       userDataProvider,
       (previous, next) {
         if (next is AsyncData && next.value != null) {
-          ref.read(routerProvider).goNamed('main');
+          ref.read(routerProvider).goNamed('main', extra: xFile!= null?File(xFile!.path):null);
         } else if (next is AsyncError) {
           context.showSnackBar(next.error.toString());
         }
@@ -57,37 +61,47 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                 ),
               ),
             ),
-            const CircleAvatar(
-              radius: 40,
-              child: Icon(
-                Icons.add_a_photo,
-                size: 40,
-                color: ghostWhite,
-              ),
+            GestureDetector(
+              onTap: () async {
+                xFile =
+                    await ImagePicker().pickImage(source: ImageSource.gallery);
+                setState(() {});
+              },
+              child: CircleAvatar(
+                  radius: 40,
+                  backgroundImage:
+                      xFile == null ? null : FileImage(File(xFile!.path)),
+                  child: xFile == null
+                      ? const Icon(
+                          Icons.add_a_photo,
+                          size: 40,
+                          color: ghostWhite,
+                        )
+                      : null),
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             TextInpuWidget(
               controller: nameController,
               labelText: 'Name',
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             TextInpuWidget(
               controller: emailController,
               labelText: 'Email',
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             TextInpuWidget(
               controller: passwordController,
               labelText: 'Password',
               // obscureText: true,
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             TextInpuWidget(
               controller: reTypePasswordController,
               labelText: 'Retype Password',
               // obscureText: true,
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             switch (ref.watch(userDataProvider)) {
               AsyncData(:final value) => value == null
                   ? ElevatedButton(

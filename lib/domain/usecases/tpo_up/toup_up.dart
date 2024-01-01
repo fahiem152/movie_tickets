@@ -28,8 +28,8 @@ class TopUp implements UseCase<Result<void>, TopUpParam> {
       ),
     );
     return switch (createTransactionResult) {
-      Success(value: _) => Result.success(null),
-      Failed(message: _) => Result.failed("Failed to top up")
+      Success(value: _) => const Result.success(null),
+      Failed(message: _) => const Result.failed("Failed to top up")
     };
   }
 }

@@ -23,7 +23,6 @@ class TmdbMovieRepositoy implements MovieRepository {
         'https://api.themoviedb.org/3/movie/$id?language=en-US',
         options: _options,
       );
-      print("response: $response");
       log("response: $response");
       return Result.success(MovieDetail.fromJSON(response.data));
     } on DioException catch (e) {

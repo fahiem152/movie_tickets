@@ -28,7 +28,7 @@ class BottomNavBarItem extends StatelessWidget {
         ),
         Text(
           title,
-          style: TextStyle(fontSize: 9.0, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 9.0, fontWeight: FontWeight.bold),
         ),
       ],
     );

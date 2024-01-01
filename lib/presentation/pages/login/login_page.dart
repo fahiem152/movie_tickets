@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_tickets/presentation/extensions/build_context_extension.dart';
 import 'package:movie_tickets/presentation/msic/constans.dart';
-import 'package:movie_tickets/presentation/msic/methods.dart';
 import 'package:movie_tickets/presentation/providers/routes/router_provider.dart';
 
 import 'package:movie_tickets/presentation/providers/user_data/user_data_provider.dart';
@@ -34,7 +33,7 @@ class LoginPage extends ConsumerWidget {
         padding: const EdgeInsets.all(24),
         child: ListView(
           children: [
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             Align(
               alignment: Alignment.center,
               child: SizedBox(
@@ -45,18 +44,18 @@ class LoginPage extends ConsumerWidget {
                 ),
               ),
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             TextInpuWidget(
               controller: emailController,
               labelText: 'Email',
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             TextInpuWidget(
               controller: passwordController,
               labelText: 'Password',
               obscureText: true,
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             Align(
               alignment: Alignment.centerRight,
               child: TextButton(

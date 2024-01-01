@@ -4,7 +4,6 @@ import 'package:intl/intl.dart';
 
 import 'package:movie_tickets/domain/entities/transaction.dart';
 import 'package:movie_tickets/presentation/extensions/int_extension.dart';
-import 'package:movie_tickets/presentation/widgets/nerwork_image_card.dart';
 
 class TransactionCardWidget extends StatelessWidget {
   final Transaction transaction;

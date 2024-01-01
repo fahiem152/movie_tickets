@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_tickets/domain/entities/movie.dart';
 import 'package:movie_tickets/domain/entities/movie_detail.dart';
 import 'package:movie_tickets/presentation/msic/constans.dart';
-import 'package:movie_tickets/presentation/msic/methods.dart';
 import 'package:movie_tickets/presentation/pages/detail_page/methods/background.dart';
 import 'package:movie_tickets/presentation/pages/detail_page/methods/cast_and_crew.dart';
 import 'package:movie_tickets/presentation/pages/detail_page/methods/movie_overview.dart';
@@ -57,11 +56,11 @@ class DetailPage extends ConsumerWidget {
                       asyncMovieDetail: asyncMovieDetail,
                       context: context,
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     ...movieOverview(
                       asyncMovieDetail,
                     ),
-                    SizedBox(height: 40),
+                    const SizedBox(height: 40),
                   ],
                 ),
               ),

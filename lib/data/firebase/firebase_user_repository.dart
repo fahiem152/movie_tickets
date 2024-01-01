@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -119,21 +120,22 @@ class FirebaseUserRepository implements UserRepository {
       {required User user, required File imageFile}) async {
     String fileName = basename(imageFile.path);
     Reference reference = FirebaseStorage.instance.ref().child(fileName);
-    // Reference reference =
-    //     FirebaseStorage.instance.ref().child('profile_pictures');
 
     try {
       await reference.putFile(imageFile);
       String downloadUrl = await reference.getDownloadURL();
       var updateResult =
           await updateUser(user: user.copyWith(photoUrl: downloadUrl));
+
       if (updateResult.isSuccess) {
         return Result.success(updateResult.resultValue!);
       } else {
         return Result.failed(updateResult.errorMessage!);
       }
     } catch (e) {
-      return Result.failed("Failed to upload Image picker");
+      log("Catch Error: $e");
+
+      return const Result.failed("Failed to upload Image picker");
     }
   }
 }

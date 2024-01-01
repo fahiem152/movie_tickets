@@ -4,13 +4,11 @@ import 'package:movie_tickets/domain/entities/result.dart';
 class DummyAuthentication implements Authentication {
   @override
   String? getLoggedInUserId() {
-    // TODO: implement getLoggedInUserId
     throw UnimplementedError();
   }
 
   @override
   Future<Result<void>> logOut() {
-    // TODO: implement logOut
     throw UnimplementedError();
   }
 
@@ -25,7 +23,6 @@ class DummyAuthentication implements Authentication {
   @override
   Future<Result<String>> register(
       {required String email, required String password}) {
-    // TODO: implement register
     throw UnimplementedError();
   }
 }

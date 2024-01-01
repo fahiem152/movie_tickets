@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:movie_tickets/presentation/msic/methods.dart';
 import 'package:movie_tickets/presentation/pages/movie_page/methods/movie_list.dart';
 import 'package:movie_tickets/presentation/pages/movie_page/methods/promotion_list.dart';
 import 'package:movie_tickets/presentation/pages/movie_page/methods/search_bar.dart';
@@ -19,9 +18,9 @@ class MoviePage extends ConsumerWidget {
     return ListView(
       children: [
         userInfo(ref),
-        SizedBox(height: 40),
+        const SizedBox(height: 40),
         searchBar(context),
-        SizedBox(height: 24),
+        const SizedBox(height: 24),
         ...movieList(
           title: 'Now Playing',
           movies: ref.watch(nowPlayingProvider),
@@ -29,9 +28,9 @@ class MoviePage extends ConsumerWidget {
             ref.read(routerProvider).pushNamed('detail', extra: movie);
           },
         ),
-        SizedBox(height: 30),
+        const SizedBox(height: 30),
         ...promotionList(promotionImageFileNames),
-        SizedBox(height: 30),
+        const SizedBox(height: 30),
         ...movieList(
           title: 'Up Coming',
           movies: ref.watch(upComingProvider),

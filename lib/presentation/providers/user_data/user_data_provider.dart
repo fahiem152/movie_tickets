@@ -113,8 +113,9 @@ class UserData extends _$UserData {
       {required User user, required File imageFile}) async {
     UploadProfilePicture uploadProfilePicture =
         ref.read(uploadProfilePictureProvider);
-    var result = uploadProfilePicture(
+    var result = await uploadProfilePicture(
         UploadProfilePictureParam(imageFile: imageFile, user: user));
+
     if (result case Success(value: final user)) {
       state = AsyncData(user);
     }

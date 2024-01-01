@@ -22,7 +22,7 @@ Widget userInfo(WidgetRef ref) => Padding(
                     ? NetworkImage(
                             ref.watch(userDataProvider).valueOrNull!.photoUrl!)
                         as ImageProvider
-                    : AssetImage('assets/pp-placeholder.png'),
+                    : const AssetImage('assets/pp-placeholder.png'),
               ),
             ),
           ),
@@ -32,7 +32,7 @@ Widget userInfo(WidgetRef ref) => Padding(
             children: [
               Text(
                 "Hallo, ${ref.watch(userDataProvider).when(data: (data) => data?.name.split(' ').first ?? 'no-name', error: (error, stackTrace) => '', loading: () => 'Loading...')}",
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16.0,
                   fontWeight: FontWeight.bold,
                 ),
@@ -41,7 +41,7 @@ Widget userInfo(WidgetRef ref) => Padding(
                 "Let's book your favorite movie!",
                 style: TextStyle(fontSize: 12),
               ),
-              SizedBox(height: 5),
+              const SizedBox(height: 5),
               GestureDetector(
                 onTap: () {
                   ref.read(routerProvider).pushNamed('wallet');
@@ -75,7 +75,6 @@ Widget userInfo(WidgetRef ref) => Padding(
 String getGreeting() {
   var hour = DateTime.now().hour;
   log("Hour: $hour");
-  print("Hour: $hour");
   if (hour < 12) {
     return 'Good Morning';
   } else if (hour < 18) {

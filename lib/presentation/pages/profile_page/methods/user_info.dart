@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:movie_tickets/presentation/msic/methods.dart';
 import 'package:movie_tickets/presentation/providers/user_data/user_data_provider.dart';
 
 List<Widget> userInfo(WidgetRef ref) => [
@@ -22,7 +21,7 @@ List<Widget> userInfo(WidgetRef ref) => [
           ),
         ),
       ),
-      SizedBox(height: 20),
+      const SizedBox(height: 20),
       Text(
         ref.watch(userDataProvider).valueOrNull?.name ?? "",
         textAlign: TextAlign.center,
@@ -31,7 +30,7 @@ List<Widget> userInfo(WidgetRef ref) => [
           fontWeight: FontWeight.bold,
         ),
       ),
-      SizedBox(height: 20),
+      const SizedBox(height: 20),
       Text(
         ref.watch(userDataProvider).valueOrNull?.email ?? "",
         textAlign: TextAlign.center,
