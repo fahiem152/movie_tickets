@@ -19,9 +19,9 @@ class MoviePage extends ConsumerWidget {
     return ListView(
       children: [
         userInfo(ref),
-        verticalSpace(40),
+        SizedBox(height: 40),
         searchBar(context),
-        verticalSpace(24),
+        SizedBox(height: 24),
         ...movieList(
           title: 'Now Playing',
           movies: ref.watch(nowPlayingProvider),
@@ -29,9 +29,9 @@ class MoviePage extends ConsumerWidget {
             ref.read(routerProvider).pushNamed('detail', extra: movie);
           },
         ),
-        verticalSpace(30),
+        SizedBox(height: 30),
         ...promotionList(promotionImageFileNames),
-        verticalSpace(30),
+        SizedBox(height: 30),
         ...movieList(
           title: 'Up Coming',
           movies: ref.watch(upComingProvider),

@@ -9,6 +9,7 @@ import 'package:movie_tickets/presentation/pages/main_page/main_page.dart';
 import 'package:movie_tickets/presentation/pages/register/register_page.dart';
 import 'package:movie_tickets/presentation/pages/seat_booking/seat_booking_page.dart';
 import 'package:movie_tickets/presentation/pages/time_booking/time_booking_page.dart';
+import 'package:movie_tickets/presentation/pages/wallet_page/wallet_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'router_provider.g.dart';
@@ -60,6 +61,11 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(
           builder: (context, state) => BookingConfirmationPage(
             transactionDetail: state.extra as (MovieDetail, Transaction),
           ),
+        ),
+        GoRoute(
+          path: '/wallet',
+          name: 'wallet',
+          builder: (context, state) => const WalletPage(),
         ),
       ],
     );

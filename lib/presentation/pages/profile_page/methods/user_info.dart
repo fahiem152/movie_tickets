@@ -22,7 +22,7 @@ List<Widget> userInfo(WidgetRef ref) => [
           ),
         ),
       ),
-      verticalSpace(20),
+      SizedBox(height: 20),
       Text(
         ref.watch(userDataProvider).valueOrNull?.name ?? "",
         textAlign: TextAlign.center,
@@ -31,7 +31,7 @@ List<Widget> userInfo(WidgetRef ref) => [
           fontWeight: FontWeight.bold,
         ),
       ),
-      verticalSpace(20),
+      SizedBox(height: 20),
       Text(
         ref.watch(userDataProvider).valueOrNull?.email ?? "",
         textAlign: TextAlign.center,

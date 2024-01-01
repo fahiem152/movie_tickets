@@ -65,29 +65,29 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                 color: ghostWhite,
               ),
             ),
-            verticalSpace(24),
+            SizedBox(height: 24),
             TextInpuWidget(
               controller: nameController,
               labelText: 'Name',
             ),
-            verticalSpace(24),
+            SizedBox(height: 24),
             TextInpuWidget(
               controller: emailController,
               labelText: 'Email',
             ),
-            verticalSpace(24),
+            SizedBox(height: 24),
             TextInpuWidget(
               controller: passwordController,
               labelText: 'Password',
               // obscureText: true,
             ),
-            verticalSpace(24),
+            SizedBox(height: 24),
             TextInpuWidget(
               controller: reTypePasswordController,
               labelText: 'Retype Password',
               // obscureText: true,
             ),
-            verticalSpace(24),
+            SizedBox(height: 24),
             switch (ref.watch(userDataProvider)) {
               AsyncData(:final value) => value == null
                   ? ElevatedButton(

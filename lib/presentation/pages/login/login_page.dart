@@ -34,7 +34,7 @@ class LoginPage extends ConsumerWidget {
         padding: const EdgeInsets.all(24),
         child: ListView(
           children: [
-            verticalSpace(24),
+            SizedBox(height: 24),
             Align(
               alignment: Alignment.center,
               child: SizedBox(
@@ -45,18 +45,18 @@ class LoginPage extends ConsumerWidget {
                 ),
               ),
             ),
-            verticalSpace(24),
+            SizedBox(height: 24),
             TextInpuWidget(
               controller: emailController,
               labelText: 'Email',
             ),
-            verticalSpace(24),
+            SizedBox(height: 24),
             TextInpuWidget(
               controller: passwordController,
               labelText: 'Password',
               obscureText: true,
             ),
-            verticalSpace(24),
+            SizedBox(height: 24),
             Align(
               alignment: Alignment.centerRight,
               child: TextButton(

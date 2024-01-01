@@ -57,11 +57,11 @@ class DetailPage extends ConsumerWidget {
                       asyncMovieDetail: asyncMovieDetail,
                       context: context,
                     ),
-                    verticalSpace(20),
+                    SizedBox(height: 20),
                     ...movieOverview(
                       asyncMovieDetail,
                     ),
-                    verticalSpace(40),
+                    SizedBox(height: 40),
                   ],
                 ),
               ),

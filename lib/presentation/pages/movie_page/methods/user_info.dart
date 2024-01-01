@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_tickets/presentation/extensions/int_extension.dart';
 import 'package:movie_tickets/presentation/msic/methods.dart';
+import 'package:movie_tickets/presentation/providers/routes/router_provider.dart';
 import 'package:movie_tickets/presentation/providers/user_data/user_data_provider.dart';
 
 Widget userInfo(WidgetRef ref) => Padding(
@@ -40,10 +41,10 @@ Widget userInfo(WidgetRef ref) => Padding(
                 "Let's book your favorite movie!",
                 style: TextStyle(fontSize: 12),
               ),
-              verticalSpace(5),
+              SizedBox(height: 5),
               GestureDetector(
                 onTap: () {
-                  // Go to wallet page
+                  ref.read(routerProvider).pushNamed('wallet');
                 },
                 child: Row(
                   children: [
